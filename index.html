@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capsula del Tempo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            text-align: center;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-crea {
+            display: inline-block;
+            background: linear-gradient(135deg, #0284c7, #4f46e5);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 30px 0;
+        }
+
+        .btn-crea:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(2, 132, 199, 0.6);
+        }
+
+        .descrizione {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: left;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            color: #94a3b8;
+            backdrop-filter: blur(10px);
+        }
+
+        .descrizione h2 {
+            color: #f8fafc;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .descrizione ol {
+            padding-left: 20px;
+        }
+
+        .descrizione li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #64748b;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Capsula del Tempo</h1>
+        
+        <a href="#" class="btn-crea" onclick="alert('Funzione in arrivo!')">Crea una capsula</a>
+
+        <div class="descrizione">
+            <h2>Come funziona il servizio</h2>
+            <ol>
+                <li><strong>Carica i tuoi ricordi:</strong> Seleziona le foto più belle e scrivi un messaggio segreto per i tuoi amici o per il tuo futuro.</li>
+                <li><strong>Imposta la data:</strong> Scegli quando la capsula dovrà aprirsi (tra 1 anno, 5 anni o più).</li>
+                <li><strong>Sigilla e attendi:</strong> Il sistema custodirà al sicuro i tuoi file fino al giorno stabilito, per poi inviarli automaticamente ai destinatari.</li>
+            </ol>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Capsula del Tempo. Tutti i diritti riservati. Fatto con Python e Vercel.
+    </footer>
+
+</body>
+</html>
