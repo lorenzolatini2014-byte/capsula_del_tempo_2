@@ -135,7 +135,7 @@
             <p>Inserisci il tuo nome e cognome, carica la foto che vuoi conservare e inviala. Arriverà dritta a me e io la custodirò al sicuro per te!</p>
         </div>
 
-        <form class="form-capsula" action="https://formspree.io/f/mvkgeezj" method="POST" enctype="multipart/form-data">
+        <form id="formCapsula" class="form-capsula">
             
             <div class="form-group">
                 <label for="nome">Nome e Cognome:</label>
@@ -147,13 +147,63 @@
                 <input type="file" id="foto" name="foto" accept="image/*" required>
             </div>
 
-            <button type="submit" class="btn-invia">Invia la Capsula</button>
+            <!-- Campo nascosto per la foto convertita in testo -->
+            <input type="hidden" id="fotoBase64" name="foto_codificata">
+
+            <button type="submit" class="btn-invia" id="btnInvia">Invia la Capsula</button>
         </form>
     </div>
 
     <footer>
         &copy; 2026 Capsula del Tempo. Tutti i diritti riservati. Fatto con Python e Vercel.
     </footer>
+
+    <script>
+        const form = document.getElementById('formCapsula');
+        const fotoInput = document.getElementById('foto');
+        const btnInvia = document.getElementById('btnInvia');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const file = fotoInput.files[0];
+            if (!file) return;
+
+            btnInvia.textContent = "Invio in corso...";
+            btnInvia.disabled = true;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                // Mette la foto convertita in testo nel campo nascosto
+                document.getElementById('fotoBase64').value = event.target.result;
+
+                // Invia i dati a Formspree come normale richiesta dati
+                fetch("https://formspree.io/f/mvkgeezj", {
+                    method: "POST",
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert("Capsula inviata con successo! È arrivata a destinazione.");
+                        form.reset();
+                        btnInvia.textContent = "Invia la Capsula";
+                        btnInvia.disabled = false;
+                    } else {
+                        alert("C'è stato un errore nell'invio. Riprova.");
+                        btnInvia.textContent = "Invia la Capsula";
+                        btnInvia.disabled = false;
+                    }
+                }).catch(error => {
+                    alert("Errore di connessione.");
+                    btnInvia.textContent = "Invia la Capsula";
+                    btnInvia.disabled = false;
+                });
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
 
 </body>
 </html>
